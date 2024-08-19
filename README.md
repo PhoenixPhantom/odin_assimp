@@ -26,5 +26,5 @@ The language binding exposes multiple defines that can be changed using e.g.
 
 ## Note
 * These bindings are not fully tested.
-* Most structures can be used as intendet and bindings for all functions given in the C-API are set.
+* Most structures can be used as intendet and bindings for all functions given in the C-API are provided.
 * If you find any issues, abnormalities or have any improvement requests submit a pull request or ask me.
