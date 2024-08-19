@@ -8,8 +8,8 @@ library locally and add the location of the `libassimp.??` library file to the `
 
 
 ## Defines
-The language binding exposes multiple defines that can be changed using e.g. `-define:ASSIMP_API_VERSION="5.2.2"` in the odin build command.
-The exposed defines are:
+The language binding exposes multiple defines that can be changed using e.g. 
+`-define:ASSIMP_API_VERSION="5.2.2"` in the odin build command. The exposed defines are:
 
 | define             | Default Value  | Description | 
 | ------------------ | -------------- | ----------- |
