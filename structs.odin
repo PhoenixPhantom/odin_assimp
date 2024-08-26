@@ -8,8 +8,9 @@ import "core:c"
 #assert(size_of(c.int) == size_of(b32))
 
 Quaternion :: struct {
-	w, x, y, z: real, //why the heck these confusing names that make everyone think of cartesian coordinates?
+	w, x, y, z: real,
 }
+
 Matrix4x4 :: distinct [4][4]real //the first index is equivalent to the letters (a, b, c, d) in assimp, the second to the numbers (1, 2, 3, 4)
 Matrix3x3 :: distinct [3][3]real
 
@@ -140,9 +141,9 @@ when ASSIMP_API_VERSION >= "5.1.0" {
 		mAnimMeshes:         [^]^AnimMesh,
 		mMethod:             MorphingMethod,
 		mAABB:               AxisAlignedBoundingBox,
-		mTextureCoordsNames: ^[^]String, // FIXIT: Find out HOW this thing is supposed to be accessed (the comment in the .h file is inherintly incoherent with the code and the official documentation is incoherent with both the code and the comment)
+		mTextureCoordsNames: ^[^]String, // FIXIT: Find out how this thing is supposed to be accessed (the comment in the .h file is inherintly incoherent with the code and the official documentation is incoherent with both the code and the comment)
 
-		// Vertex UV stream names. (SEEMINGLY) nil if not present (and can seemingly also point to nil, even if non-nill itself), Documentation states: "Pointer to array of size MAX_NUMBER_OF_TEXTURECOORDS"
+		// Vertex UV stream names. (seemingly) nil if not present (and can seemingly also point to nil, even if non-nill itself), Documentation states: "Pointer to array of size MAX_NUMBER_OF_TEXTURECOORDS"
 	}
 } else {
 	@(private = "file")
