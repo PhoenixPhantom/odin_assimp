@@ -5,19 +5,22 @@ package assimp
 
 import "core:c"
 
-#assert(size_of(c.int) == size_of(b32))
+#assert(size_of(c.int) == size_of(i32))
 
-Quaternion :: struct {
-	w, x, y, z: real,
-}
+Quaternion :: quaternion256 when ASSIMP_DOUBLE_PERCISION else quaternion128
 
-Matrix4x4 :: distinct [4][4]real //the first index is equivalent to the letters (a, b, c, d) in assimp, the second to the numbers (1, 2, 3, 4)
-Matrix3x3 :: distinct [3][3]real
+// Format:
+// a1, a2, a3, a4,
+// b1, b2, b3, b4,
+// c1, c2, c3, c4,
+// d1, d2, d3, d4,
+Matrix4x4 :: [4][4]real //the first index is equivalent to the letters (a, b, c, d) in assimp, the second to the numbers (1, 2, 3, 4)
+Matrix3x3 :: [3][3]real
 
-Vector3D :: distinct [3]real //access using v.x, v.y and v.z is given by odin
-Vector2D :: distinct [2]real //see Vector3D
-Color4D :: distinct [4]c.float //access using c.r, c.g, c.b, and c.a is given by the odin language
-Color3D :: distinct [3]c.float
+Vector3D :: [3]real //access using v.x, v.y and v.z is given by odin
+Vector2D :: [2]real //see Vector3D
+Color4D :: [4]c.float //access using c.r, c.g, c.b, and c.a is given by the odin language
+Color3D :: [3]c.float
 
 
 LogStream :: struct {

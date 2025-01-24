@@ -6,11 +6,11 @@ package assimp
 import "core:c"
 
 //the API version can be provided to this library using odin's defines as different versions are minorly incompatible with oneanother
-//e.g. on debian based systems, the version optained through apt get libassimp-dev is (as of 7.8.2024) 5.2.2 as opposed to the newest 5.4.2
-ASSIMP_API_VERSION :: #config(ASIMP_API_VERSION, "5.2.2")
+//e.g. on debian based systems, the version optained through apt get libassimp-dev is (as of 7.8.2024) 5.2.2
+ASSIMP_API_VERSION :: #config(ASSIMP_API_VERSION, "5.4.3")
 
-ASIMP_DOUBLE_PERCISION :: #config(ASIMP_DOUBLE_PERCISION, false)
-real :: distinct (c.double when ASIMP_DOUBLE_PERCISION else c.float)
+ASSIMP_DOUBLE_PERCISION :: #config(ASSIMP_DOUBLE_PERCISION, false)
+real :: distinct (c.double when ASSIMP_DOUBLE_PERCISION else c.float)
 
 
 MAXLEN :: 1024

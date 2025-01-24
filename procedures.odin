@@ -53,20 +53,26 @@ GetMaterialInteger :: proc(
 
 //Transform the assimp String to an odin string (points to the same data as the original (assimp) String)
 //    allocates size_of(string) bytes
-GetString :: proc(str: ^String) -> (string, bool) {
-	if str.length <= 0 || str.length > MAXLEN do return {}, false
-	return string(str.data[:str.length]), true
+GetString :: proc(str: ^String) -> string {
+	return string(str.data[:str.length])
 }
 
-//Create an odin string based on the assimp String (copys all the string's contents)
-//    allocates str.length + size_of(string) bytes
-GetStringCopy :: proc(str: String) -> (string, bool) {
-	if str.length <= 0 || str.length > MAXLEN do return {}, false
-	str_copy := make([]byte, str.length)
-	for i in 0 ..< str.length {
-		str_copy[i] = str.data[i]
+GetMatrix :: proc(mat: Matrix4x4) -> (res: matrix[4, 4]real) {
+	#unroll for x in 0 ..< 4 {
+		#unroll for y in 0 ..< 4 {
+			res[x, y] = mat[x][y]
+		}
 	}
-	return string(str_copy[:]), true
+	return
+}
+
+GetMatrixAs :: proc(mat: Matrix4x4, $type: typeid) -> (res: matrix[4, 4]type) {
+	#unroll for x in 0 ..< 4 {
+		#unroll for y in 0 ..< 4 {
+			res[x, y] = cast(type)mat[x][y]
+		}
+	}
+	return
 }
 
 @(default_calling_convention = "cdecl", link_prefix = "ai")
